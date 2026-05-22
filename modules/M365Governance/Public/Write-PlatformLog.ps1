@@ -12,7 +12,19 @@ function Write-PlatformLog {
 
     $LogEntry = "[$Timestamp] [$Level] $Message"
 
+    $LogDirectory = ".\logs"
+    $LogPath = "$LogDirectory\platform.log"
+
+    # Ensure log directory exists
+    if (-not (Test-Path $LogDirectory)) {
+
+        New-Item `
+            -Path $LogDirectory `
+            -ItemType Directory `
+            -Force | Out-Null
+    }
+
     Write-Output $LogEntry
 
-    Add-Content -Path ".\logs\platform.log" -Value $LogEntry
+    Add-Content -Path $LogPath -Value $LogEntry
 }
