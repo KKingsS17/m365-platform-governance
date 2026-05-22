@@ -1,8 +1,18 @@
-function Connect-M365Platform {
-    [CmdletBinding()]
-    param ()
-
-    Connect-MgGraph -Scopes "Directory.Read.All", "Group.Read.All"
+# Import Public Functions
+Get-ChildItem -Path "$PSScriptRoot\Public\*.ps1" | ForEach-Object {
+    . $_.FullName
 }
 
-Export-ModuleMember -Function Connect-M365Platform
+# Import Private Functions
+Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" | ForEach-Object {
+    . $_.FullName
+}
+
+# Export Public Functions
+Export-ModuleMember -Function @(
+    'Connect-M365Platform',
+    'Get-TenantBaseline',
+    'Invoke-GovernanceAudit',
+    'Export-GovernanceReport',
+    'Write-PlatformLog'
+)
