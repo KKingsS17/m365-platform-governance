@@ -1,0 +1,117 @@
+# =========================
+# PowerShell
+# =========================
+
+*.ps1xml
+*.pssc
+*.psrc
+*.clixml
+
+# PowerShell history
+ConsoleHost_history.txt
+
+# PowerShell transcripts
+*.txt
+
+# =========================
+# VS Code
+# =========================
+
+.vscode/
+
+# =========================
+# Logs
+# =========================
+
+*.log
+logs/
+
+# =========================
+# Reports / Generated Output
+# =========================
+
+reports/*.html
+reports/*.csv
+reports/*.json
+reports/*.xml
+
+# Exported data
+exports/
+output/
+
+# =========================
+# Environment / Secrets
+# =========================
+
+.env
+.env.*
+secrets.json
+appsettings.json
+
+# Authentication artifacts
+token.cache
+auth.json
+
+# =========================
+# OS Files
+# =========================
+
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# =========================
+# Test Results
+# =========================
+
+TestResults/
+coverage.xml
+
+# =========================
+# Dependency / Package Artifacts
+# =========================
+
+bin/
+obj/
+
+# =========================
+# Temporary Files
+# =========================
+
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Archive Files
+# =========================
+
+*.zip
+*.rar
+*.7z
+
+# =========================
+# Terraform (future-proofing)
+# =========================
+
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# =========================
+# Azure / Cloud Local Config
+# =========================
+
+.azure/
+
+# =========================
+# PnP / SharePoint Auth Cache
+# =========================
+
+pnpmanagementshell/
+
+# =========================
+# Node Modules (future-proofing)
+# =========================
+
+node_modules/
