@@ -1,10 +1,15 @@
+# Import Classes
+Get-ChildItem -Path "$PSScriptRoot\Classes\*.ps1" | ForEach-Object {
+    . $_.FullName
+}
+
 # Import Public Functions
 Get-ChildItem -Path "$PSScriptRoot\Public\*.ps1" | ForEach-Object {
     . $_.FullName
 }
 
 # Import Private Functions
-Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" | ForEach-Object {
+Get-ChildItem -Path "$PSScriptRoot\Private\*.ps1" -Recurse | ForEach-Object {
     . $_.FullName
 }
 
