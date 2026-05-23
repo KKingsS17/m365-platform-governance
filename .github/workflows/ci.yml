@@ -1,0 +1,51 @@
+name: M365 Platform Governance CI
+
+on:
+    push:
+        branches:
+            - main
+            - feature/*
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    validate:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Setup PowerShell
+              uses: actions/setup-python@v5
+
+            - name: Display PowerShell Version
+              shell: pwsh
+              run: |
+                  $PSVersionTable
+
+            - name: Install Required Modules
+              shell: pwsh
+              run: |
+                  Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+                  Install-Module Pester -Force -Scope CurrentUser
+                  Install-Module Microsoft.Graph -Force -Scope CurrentUser
+
+            - name: Run PSScriptAnalyzer
+              shell: pwsh
+              run: |
+                  Invoke-ScriptAnalyzer `
+                    -Path ./modules `
+                    -Settings ./PSScriptAnalyzerSettings.psd1 `
+                    -Recurse
+
+            - name: Validate PowerShell Module Import
+              shell: pwsh
+              run: |
+                  Import-Module ./modules/M365Governance/M365Governance.psd1 -Force
+
+            - name: Run Pester Tests
+              shell: pwsh
+              run: |
+                  Invoke-Pester ./tests
