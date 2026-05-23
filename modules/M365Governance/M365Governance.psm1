@@ -21,5 +21,6 @@ Export-ModuleMember -Function @(
     'Export-GovernanceReport',
     'Write-PlatformLog',
     'Export-HtmlGovernanceReport',
-    'Get-GovernanceMetrics'
+    'Get-GovernanceMetrics',
+    'Invoke-PlatformRemediation'
 )
