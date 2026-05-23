@@ -14,6 +14,7 @@ function Invoke-GovernanceAudit {
     $Findings += Test-TeamsGovernance -Config $Config
     $Findings += Test-GuestAccessGovernance -Config $Config
     $Findings += Test-GroupLifecycleGovernance -Config $Config
+    $Findings += Test-GovernanceDrift -Config $Config
 
     Write-PlatformLog -Message "Governance audit completed"
 
