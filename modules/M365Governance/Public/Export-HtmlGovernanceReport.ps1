@@ -20,6 +20,8 @@ function Export-HtmlGovernanceReport {
         OperationalOwner,
         Timestamp
 
+    $Scorecard = Get-GovernanceScorecard -Findings $Findings
+
     $Html = $ReportData | ConvertTo-Html `
         -Title "Microsoft 365 Governance Report" `
         -PreContent @"
@@ -27,9 +29,14 @@ function Export-HtmlGovernanceReport {
 
 <h2>Executive Summary</h2>
 
-<p>
-This report contains governance findings identified during automated Microsoft 365 platform validation.
-</p>
+<p><strong>Governance Score:</strong> $($Scorecard.GovernanceScore)</p>
+
+<ul>
+<li>Total Findings: $($Scorecard.TotalFindings)</li>
+<li>High Severity: $($Scorecard.HighSeverity)</li>
+<li>Medium Severity: $($Scorecard.MediumSeverity)</li>
+<li>Low Severity: $($Scorecard.LowSeverity)</li>
+</ul>
 "@
 
     $Html | Out-File $Path
