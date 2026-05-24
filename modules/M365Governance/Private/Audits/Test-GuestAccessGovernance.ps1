@@ -18,7 +18,9 @@ function Test-GuestAccessGovernance {
             "Medium",
             "Review",
             $Guest.DisplayName,
-            "Guest account requires governance review"
+            "Guest account requires governance review",
+            "Validate guest business justification and remove stale guest accounts",
+            "Identity and Access Management Team"
         )
     }
 

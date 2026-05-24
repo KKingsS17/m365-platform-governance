@@ -1,0 +1,22 @@
+name: Platform Release
+
+on:
+    workflow_dispatch:
+
+jobs:
+    release:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Validate Module
+              shell: pwsh
+              run: |
+                  Import-Module ./modules/M365Governance/M365Governance.psd1 -Force
+
+            - name: Display Release Version
+              shell: pwsh
+              run: |
+                  Write-Output "Preparing platform release"

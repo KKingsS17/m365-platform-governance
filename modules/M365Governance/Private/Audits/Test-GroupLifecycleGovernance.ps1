@@ -20,7 +20,9 @@ function Test-GroupLifecycleGovernance {
                 "Low",
                 "Review",
                 $Group.DisplayName,
-                "Group exceeds lifecycle review threshold"
+                "Group exceeds lifecycle review threshold",
+                "Review group activity and archive or remove inactive collaboration resources",
+                "Collaboration Platform Team"
             )
         }
     }

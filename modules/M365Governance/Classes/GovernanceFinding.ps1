@@ -6,6 +6,8 @@ class GovernanceFinding {
     [string]$Status
     [string]$Resource
     [string]$Message
+    [string]$Recommendation
+    [string]$OperationalOwner
     [datetime]$Timestamp
 
     GovernanceFinding (
@@ -14,14 +16,19 @@ class GovernanceFinding {
         [string]$Severity,
         [string]$Status,
         [string]$Resource,
-        [string]$Message
+        [string]$Message,
+        [string]$Recommendation,
+        [string]$OperationalOwner
     ) {
+
         $this.Control = $Control
         $this.Category = $Category
         $this.Severity = $Severity
         $this.Status = $Status
         $this.Resource = $Resource
         $this.Message = $Message
+        $this.Recommendation = $Recommendation
+        $this.OperationalOwner = $OperationalOwner
         $this.Timestamp = Get-Date
     }
 }

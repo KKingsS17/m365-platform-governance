@@ -20,7 +20,9 @@ function Test-TeamsGovernance {
                 "High",
                 "NonCompliant",
                 $Team.DisplayName,
-                "Team does not have assigned owners"
+                "Team does not have assigned owners",
+                "Assign at least one business and one technical owner",
+                "M365 Platform Team"
             )
         }
     }

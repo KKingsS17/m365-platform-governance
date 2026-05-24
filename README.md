@@ -1,3 +1,5 @@
+![CI](https://github.com/KKingsS17/m365-platform-governance/actions/workflows/ci.yml/badge.svg)
+
 # Microsoft 365 Platform Governance Framework
 
 ## Overview

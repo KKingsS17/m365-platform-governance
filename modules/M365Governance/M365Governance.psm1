@@ -19,5 +19,8 @@ Export-ModuleMember -Function @(
     'Get-TenantBaseline',
     'Invoke-GovernanceAudit',
     'Export-GovernanceReport',
-    'Write-PlatformLog'
+    'Write-PlatformLog',
+    'Export-HtmlGovernanceReport',
+    'Get-GovernanceMetrics',
+    'Invoke-PlatformRemediation'
 )

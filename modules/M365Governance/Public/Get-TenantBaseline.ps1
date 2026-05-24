@@ -2,10 +2,14 @@ function Get-TenantBaseline {
 
     [CmdletBinding()]
     param (
-        [string]$ConfigPath = ".\config\tenant-baseline.json"
+        [ValidateSet('dev','test','prod')]
+        [string]$Environment = 'prod'
     )
 
-    Write-PlatformLog -Message "Loading tenant baseline configuration"
+    $ConfigPath = ".\config\tenant-baseline.$Environment.json"
+
+    Write-PlatformLog `
+        -Message "Loading tenant baseline configuration for environment: $Environment"
 
     $Config = Get-ConfigFile -Path $ConfigPath
 
