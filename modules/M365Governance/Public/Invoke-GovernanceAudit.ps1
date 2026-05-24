@@ -2,12 +2,13 @@ function Invoke-GovernanceAudit {
 
     [CmdletBinding()]
     param (
-        [string]$ConfigPath = ".\config\tenant-baseline.json"
+        [ValidateSet('dev','test','prod')]
+        [string]$Environment = 'prod'
     )
 
     Write-PlatformLog -Message "Starting governance audit"
 
-    $Config = Get-TenantBaseline -ConfigPath $ConfigPath
+    $Config = Get-TenantBaseline -Environment $Environment
 
     $Findings = @()
 
