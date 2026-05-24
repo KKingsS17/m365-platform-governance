@@ -24,7 +24,7 @@ function Write-PlatformLog {
             -Force | Out-Null
     }
 
-    Write-Output $LogEntry
+    Write-Verbose $LogEntry
 
     Add-Content -Path $LogPath -Value $LogEntry
 }
