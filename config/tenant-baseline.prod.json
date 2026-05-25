@@ -5,6 +5,7 @@
     "GovernanceStandards": {
         "RequireGroupOwners": true,
         "MaxInactiveGroupDays": 90,
+        "TeamsInactiveThresholdDays": 90,
         "RequireNamingConvention": true,
         "NamingConventionPrefix": "CORP",
         "AllowedGroupTypes": [

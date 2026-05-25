@@ -2,8 +2,10 @@ function Get-TeamsInventory {
 
     [CmdletBinding()]
     param (
-        $Teams
+        $Context
     )
+
+    $Teams = $Context.TeamsDataset
 
     Write-PlatformLog -Message "Collecting Teams inventory"
 

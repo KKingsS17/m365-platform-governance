@@ -2,8 +2,10 @@ function Get-OrphanedTeams {
 
     [CmdletBinding()]
     param (
-        $Teams
+        $Context
     )
+
+    $Teams = $Context.TeamsDataset
 
     Write-PlatformLog -Message "Running orphaned Teams validation"
 

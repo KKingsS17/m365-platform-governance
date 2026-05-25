@@ -2,9 +2,11 @@ function Test-TeamsNamingPolicy {
 
     [CmdletBinding()]
     param (
-        $Config,
-        $Teams
+        $Context
     )
+
+    $Teams = $Context.TeamsDataset
+    $Config = $Context.TenantConfig
 
     Write-PlatformLog -Message "Running Teams naming policy validation"
 
