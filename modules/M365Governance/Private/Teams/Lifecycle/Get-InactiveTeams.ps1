@@ -3,9 +3,11 @@ function Get-InactiveTeams {
     [CmdletBinding()]
     param (
         [int]$InactiveDays = 90,
-        $Teams,
-        $Config
+        $Context
     )
+
+    $Config = $Context.TenantConfig
+    $Teams = $Context.TeamsDataset
 
     Write-PlatformLog -Message "Running inactive Teams analysis"
 

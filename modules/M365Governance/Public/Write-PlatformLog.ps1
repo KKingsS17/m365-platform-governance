@@ -3,14 +3,21 @@ function Write-PlatformLog {
     [CmdletBinding()]
     param (
         [string]$Message,
-
+        [string]$ExecutionId,
         [ValidateSet('Information','Warning','Error')]
         [string]$Level = 'Information'
     )
 
     $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
-    $LogEntry = "[$Timestamp] [$Level] $Message"
+    if ($ExecutionId) {
+
+        $LogEntry = "[$Timestamp] [$Level] [$ExecutionId] $Message"
+    }
+    else {
+
+        $LogEntry = "[$Timestamp] [$Level] $Message"
+    }
 
     $LogDirectory = ".\logs"
     $LogPath = "$LogDirectory\platform.log"

@@ -2,32 +2,41 @@ function Invoke-TeamsGovernanceAssessment {
 
     [CmdletBinding()]
     param (
+
         [ValidateSet('dev','test','prod')]
         [string]$Environment = 'prod'
     )
 
-    Write-PlatformLog -Message "Starting Teams governance assessment"
+    $Context = New-ExecutionContext `
+        -Environment $Environment
 
-    $Config = Get-TenantBaseline -Environment $Environment
+    Write-PlatformLog `
+        -Message "Starting Teams governance assessment" `
+        -ExecutionId $Context.ExecutionId
 
-    $Teams = Get-TeamsDataset
+    $Context.TeamsDataset = Get-TeamsDataset
 
-    $Inventory = Get-TeamsInventory -Teams $Teams
+    $Context.Inventory = Get-TeamsInventory `
+        -Context $Context
 
-    $InactiveTeams = Get-InactiveTeams `
-        -Teams $Teams `
-        -InactiveDays $Config.GovernanceStandards.TeamsInactiveThresholdDays
+    $Context.InactiveTeams = Get-InactiveTeams `
+        -Context $Context `
+        -InactiveDays `
+            $Context.TenantConfig.GovernanceStandards.TeamsInactiveThresholdDays
 
-    $Findings = @()
+    $Context.Findings += Get-OrphanedTeams `
+        -Context $Context
 
-    $Findings += Get-OrphanedTeams -Teams $Teams
-    $Findings += Test-TeamsNamingPolicy `
-        -Config $Config `
-        -Teams $Teams
+    $Context.Findings += Test-TeamsNamingPolicy `
+        -Context $Context
 
-    return [PSCustomObject]@{
-        Inventory      = $Inventory
-        InactiveTeams  = $InactiveTeams
-        Findings       = $Findings
-    }
+    $Context.Metrics = Get-GovernanceScorecard `
+        -Findings $Context.Findings
+
+    $Context.ExecutionStatus = "Completed"
+
+    Export-TeamsGovernanceReport `
+    -Context $Context
+
+    return $Context
 }
