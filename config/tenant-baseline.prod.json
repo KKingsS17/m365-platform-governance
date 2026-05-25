@@ -1,0 +1,57 @@
+{
+    "TenantName": "KKingsS",
+    "Environment": "Production",
+    "Version": "1.0.0",
+    "GovernanceStandards": {
+        "RequireGroupOwners": true,
+        "MaxInactiveGroupDays": 90,
+        "RequireNamingConvention": true,
+        "NamingConventionPrefix": "CORP",
+        "AllowedGroupTypes": [
+            "Microsoft365",
+            "Security"
+        ]
+    },
+    "GuestAccess": {
+        "GuestAccessAllowed": false,
+        "AllowGuestInvitations": false,
+        "RequireGuestExpiration": true,
+        "GuestExpirationDays": 30
+    },
+    "ExternalSharing": {
+        "ExternalSharingAllowed": false,
+        "SharePointExternalSharing": false,
+        "OneDriveExternalSharing": false
+    },
+    "TeamsGovernance": {
+        "AllowPrivateChannels": true,
+        "AllowSharedChannels": false,
+        "RequireTeamsOwners": true,
+        "InactiveTeamThresholdDays": 90
+    },
+    "SharePointGovernance": {
+        "RequireSiteClassification": true,
+        "RequireSensitivityLabels": true,
+        "MaxSiteStorageGB": 1024
+    },
+    "ExchangeGovernance": {
+        "AllowAutoForwarding": false,
+        "RequireMailboxAuditing": true,
+        "SharedMailboxMaxSizeGB": 50
+    },
+    "LifecycleManagement": {
+        "EnableGroupExpiration": true,
+        "GroupExpirationDays": 180,
+        "EnableArchivePolicies": true
+    },
+    "Reporting": {
+        "GenerateHtmlReports": true,
+        "GenerateCsvReports": true,
+        "ReportRetentionDays": 30
+    },
+    "Logging": {
+        "EnableAuditLogging": true,
+        "LogLevel": "Information",
+        "CentralizedLogging": false
+    }
+}

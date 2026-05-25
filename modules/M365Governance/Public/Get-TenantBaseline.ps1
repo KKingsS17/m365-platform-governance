@@ -11,7 +11,5 @@ function Get-TenantBaseline {
     Write-PlatformLog `
         -Message "Loading tenant baseline configuration for environment: $Environment"
 
-    $Config = Get-ConfigFile -Path $ConfigPath
-
-    return $Config
+    return Get-Content $ConfigPath | ConvertFrom-Json
 }
