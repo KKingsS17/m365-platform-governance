@@ -26,5 +26,6 @@ Export-ModuleMember -Function @(
     'Get-GovernanceScorecard',
     'Get-TechnicalDebtReport',
     'Export-GovernanceTrend',
-    'Get-ExecutiveGovernanceSummary'
+    'Get-ExecutiveGovernanceSummary',
+    'Invoke-TeamsGovernanceAssessment'
 )
